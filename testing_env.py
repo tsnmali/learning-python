@@ -1,23 +1,53 @@
-this_is_a_list = ['a', 1, '5']
-this_is_a_dictionary = { "Letter_A": 'a'}
 
-print(this_is_a_list[0])
-print(this_is_a_dictionary["Letter_A"])
-print(this_is_a_dictionary.keys())
-print(this_is_a_dictionary.values())
+name = input("Enter your first and last name: ")
 
-first_letter_in_the_alphabet = this_is_a_dictionary["Letter_A"]
-print(first_letter_in_the_alphabet)
+while len(name.split()) < 2:
+    name = input("Please enter your first and last name: ")
 
-second_letter_in_the_alphabet = this_is_a_dictionary["Letter_B"] = 'b' #This is how you update a dictionary.
-print(second_letter_in_the_alphabet)
+while len(name.split()) > 2:
+    name = input("Please enter your first and last name only. Try again: ")
 
-a_dict_with_a_list = {"Example": [1,2,3,"4","5","6"]} #This shows you can have lists inside dictionaries+
 
-print("======================================")
-user_sentence = input("Type in a sentence to check how long it is. Remember, spaces count as characters: ")
-print(f"Your sentence is {len(user_sentence)} characters long")
-print("======================================")
+
+def user_name_analysis(name):
+        cleaned = name.strip()
+        upper_case_version = cleaned.upper()
+        lower_case_version = cleaned.lower()
+        title_version = cleaned.title()
+        length_version = len(cleaned)
+        character_count_exclude_spaces = len(cleaned.replace(" ", ""))
+        word_count_exclude_spaces = len(cleaned.split(" "))
+        initials = cleaned.split(" ")[0][0].upper() + "." + cleaned.split(" ")[1][0].upper()
+
+
+        return {
+            "WhitespaceRemoval": cleaned,
+            "UpperCase": upper_case_version,
+            "LowerCase": lower_case_version,
+            "TitleVersion": title_version,
+            "CharacterLength": length_version,
+            "CharacterLengthWithoutSpace": character_count_exclude_spaces,
+            "TotalWordCountWithoutSpace": word_count_exclude_spaces,
+            "Initials": initials
+
+        }
+
+result = user_name_analysis(name)
+
+
+print(f"""
+--- Name Analysis ---
+
+Cleaned text: {result["WhitespaceRemoval"]}
+Uppercase: {result["UpperCase"]}
+Lowercase: {result["LowerCase"]}
+Title case: {result["TitleVersion"]}
+Total characters: {result["CharacterLength"]}
+Characters excluding spaces: {result["CharacterLengthWithoutSpace"]}
+Number of words: {result["TotalWordCountWithoutSpace"]}
+Initials: {result["Initials"]}
+""")
+
 
 
 
