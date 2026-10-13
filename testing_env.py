@@ -1,14 +1,3 @@
-#  name.upper() = All uppercase
-#  name.lower() = All lowercase
-# name.title () = Title case
-#  len() = Total characters including spaces
-#  .strip() (all versions) = removes spaces
-# text.count() = Counts how many times that specific substring is present
-# .split() = Creates a list out of the string with each character-separated (you choose what) content being added to the list individually
-# .startswith() (.endswith()) = Find whether or not a string begins or ends with specific substring
-# Use the above to get initials.
-# Use the above to check if the sentence starts with certain words or contains numbers.
-
 user_statement = input("Please enter a sentence of your choice: ")
 
 def user_sentence():
