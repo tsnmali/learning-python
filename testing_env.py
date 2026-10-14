@@ -1,43 +1,28 @@
-user_statement = input("Please enter a sentence of your choice: ")
+while True: # This creates an infinite loop. The loop will continue running UNTIL break is reached.
+    try:
+        number_grade = float(input("Enter your grade (0-100): ")) #tries to store the user's grade as an input that is converted into a float.
 
-def user_sentence():
-    upper_user_statement = user_statement.upper()
-    lower_user_statement = user_statement.lower()
-    title_user_statement = user_statement.title()
-    length_lower_user_statement_no_spaces = len(user_statement.replace(" ",""))
-    length_user_statement_with_spaces = len(user_statement)
-    return upper_user_statement, lower_user_statement, title_user_statement, length_lower_user_statement_no_spaces, length_user_statement_with_spaces
+        if 0 <= number_grade <= 100: # If the grade is between 0 and 100, exit the loop.
+            break
 
-results = user_sentence()
-print(f"Here is your sentence in Python's upper, lower, and title cases. Along with the length with/without spaces: {results[0], results[1], results[2], results[3], results[4]}") #Remember, when you have functions that return more than one value, the result is stored as a tuple. You can use "*" to unpack the tuple instead of doing it manually.I
+        print("Your grade must be between 0 and 100.") # Runs when the input is a number but is outside the valid range.  After printing, the loop starts over and asks for input again.
 
-def user_sentence_word_count():
-    word_count = user_statement.split(" ")
-    return word_count
-
-word_count_user_statement = user_sentence_word_count()
-print(f"The length of your sentence is: {len(word_count_user_statement)} words.")
+    except ValueError: # Handles input that cannot be converted to a float. Prints an error message and the loop repeats UNTIL it reaches a break. Beak only happens if the input is fully valid.
+        print("Your grade must be a number.")
 
 
-def get_users_name_initials():
-    while True:
-        users_name = input("Please enter your name: ")
-        split_users_name = users_name.split(" ")
-
-        if len(split_users_name) > 2:
-            print("Please enter in your first and last name only: ")
-            continue
-        else:
-            users_initials = split_users_name[0][0].upper(), split_users_name[1][0].upper()
-            return users_initials
-
-complete_results = get_users_name_initials()
-print(f"Your initials are: {complete_results[0]}.{complete_results[1]}")
+def letter_grades(number_grade): # Determines and returns the letter grade for a numeric grade.
+    if 90 <= number_grade <= 100: #Checks if the user's input exists in this letter's numeric range.
+        return "A" # if valid, returns "A" and IMMEDIATELY exits the function.
+    elif 80 <= number_grade <= 90: #Checks if the user's input exists in this letter's numeric range.
+        return "B" #if valid, returns "B" and IMMEDIATELY exits the function.
+    elif 70 <= number_grade <= 80: #Checks if the user's input exists in this letter's numeric range.
+        return "C" # if valid, returns "C" and IMMEDIATELY exits the function.
+    elif 60 <= number_grade <= 70: #Checks if the user's input exists in this letter's numeric range.
+        return "D" # if valid, returns "D" and IMMEDIATELY exits the function.
+    else:
+        return "F" #Returns this letter if the user's number is less than 59.
 
 
-
-
-
-
-
-
+result = letter_grades(number_grade) # Calls the function and stores the returned letter grade.
+print(f"Your letter grade is: {result}") #Prints the user's letter grade.
